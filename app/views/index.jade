@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    title TweetBase
+    link(href="css/main.css", rel="stylesheet")    
+  body
+    #app
+      .container
+        .row
+          .col-3
+          .col-6
+            #tweet-box
+              .box-head
+                h3 TweetBox
+                  span by 
+                    a(href="https://vk.com/tommywayss") @TommyWayss
+              .box-content(@scroll="onScroll")
+                ul
+                  li( v-for="tweet in tweets")
+                      div.user-data
+                        img(src="https://pbs.twimg.com/profile_images/880136122604507136/xHrnqf1T_bigger.jpg")
+                        div 
+                          h5 TommyWays
+                          h6 
+                            a(href="#") @fdkgjfdkg
+                      p {{tweet.body}}
+    script(src="js/libs.min.js")
+    script(src="js/main.js")

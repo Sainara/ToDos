@@ -36,17 +36,20 @@ li
       margin-left: 10px
 
   .box-content
-    height: 600px
+    max-height: 600px
     padding-bottom: 20px
     overflow: scroll
     padding-bottom: 0
 
-
     p
       font-size: 16px
-      line-height: 17px
       margin-left: 40px
+      line-height: 23px
       margin-bottom: 0
+    p.completed
+      color: #aaa
+      text-decoration: line-through
+
 
     h5
       font-size: 14px
@@ -62,13 +65,42 @@ li
 
       .user-data
         float: none
-        margin-bottom: 15px
+        margin-bottom: 5px
 
-      img
+      .checkbox
         cursor: pointer
-        width: 30px
+        width: 25px
+        height: 25px
+        border: 1px solid #eee
+        border-radius: 30px
         float: left
         margin-right: 10px
+      .checkbox.completed
+        background: #1ba1f5
+        border: none
+
+    li:last-child
+      border-bottom: none
+
+  .input-box
+    border-top: 1px solid rgba(15,70,100,.12)
+    .input-field
+      border: none
+      padding: 10px 20px
+      width: 78%
+    .input-field:focus
+      outline: none
+    .input-button
+      background: #1ba1f5
+      border: none
+      color: #fff
+      padding: 10px 20px
+      float: right
+    .input-button:focus
+      outline: none
+    .input-button:hover
+      background: #1b99e8
+
 img
   border-radius: 100%
   width: 100%

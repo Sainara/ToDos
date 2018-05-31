@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
   head
-    title TweetBase
+    title To Do List
     link(href="css/main.css", rel="stylesheet")    
   body
     #app
@@ -11,18 +11,16 @@ html(lang="en")
           .col-6
             #tweet-box
               .box-head
-                h3 TweetBox
+                h3 {{title}}
                   span by 
                     a(href="https://vk.com/tommywayss") @TommyWayss
-              .box-content(@scroll="onScroll")
+              .box-content
                 ul
-                  li( v-for="tweet in tweets")
-                      div.user-data
-                        img(src="https://pbs.twimg.com/profile_images/880136122604507136/xHrnqf1T_bigger.jpg")
-                        div 
-                          h5 TommyWays
-                          h6 
-                            a(href="#") @fdkgjfdkg
-                      p {{tweet.body}}
+                  li( v-for="todo in todos")
+                      .checkbox(v-bind:class="{ completed : todo.completed }" @click="todo.completed = !todo.completed")
+                      p(v-bind:class="{ completed : todo.completed }") {{todo.title}}
+               .input-box
+                input(v-model="TodoInput" @keyup.enter="addToDo").input-field
+                input(type="submit" value="Add" @click="addToDo").input-button
     script(src="js/libs.min.js")
     script(src="js/main.js")

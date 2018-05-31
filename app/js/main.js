@@ -1,27 +1,23 @@
 var app;
 
 app = new Vue({
-  el: '#tweet-box',
+  el: '#app',
   data: {
-    title: 'TweetBase',
-    resource_url: 'http://jsonplaceholder.typicode.com/posts',
-    tweets: [],
+    title: 'To Do List',
+    resource_url: 'http://jsonplaceholder.typicode.com/todos',
+    todos: [],
+    TodoInput: '',
     isLoading: false,
-    countperLoad: 10,
+    countperLoad: 4,
     startId: 1
   },
   methods: {
-    onScroll: function(event) {
-      var box, boxHeight, diffHeight, list, listHeight, scrollTop;
-      box = event.target;
-      list = box.firstElementChild;
-      scrollTop = box.scrollTop;
-      boxHeight = box.offsetHeight;
-      listHeight = list.offsetHeight;
-      diffHeight = listHeight - boxHeight;
-      if (diffHeight === scrollTop && !this.isLoading) {
-        return this.loadContent();
-      }
+    addToDo: function() {
+      this.todos.push({
+        title: this.TodoInput,
+        completed: false
+      });
+      return this.TodoInput = '';
     },
     loadContent: function() {
       var isLoading, options;
@@ -36,9 +32,9 @@ app = new Vue({
         }
       };
       return this.$http.get(this.resource_url, options).then(function(response) {
-        var newTwitts;
-        newTwitts = response.data;
-        this.tweets = this.tweets.concat(newTwitts);
+        var todos;
+        todos = response.data;
+        this.todos = this.todos.concat(todos);
         this.startId += this.countperLoad;
         return isLoading = false;
       }, function(error) {
